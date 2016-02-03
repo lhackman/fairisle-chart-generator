@@ -60,6 +60,7 @@ with open(sys.argv[3], 'r') as rowColours:
 canvas = Image.new('RGB',(int(num_cols*unit_size*stitch_ratio), int(num_rows*unit_size)))
 
 pen = ImageDraw.Draw(canvas)
+black = ImageColor.getcolor("Black","RGBA")
 
 for j in range(num_rows):
 	for i in range(num_cols):
@@ -67,7 +68,7 @@ for j in range(num_rows):
 		y = j*unit_size
 
 		colour = colours[colouring[j][bwMap[j][i]]]
-		pen.rectangle([x,y,x + unit_size*stitch_ratio, y+unit_size ],fill=colour) 
+		pen.rectangle([x,y,x + unit_size*stitch_ratio, y+unit_size ],fill=colour, outline=black) 
 canvas.save(sys.argv[4], 'png')
 				
 				
